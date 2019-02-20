@@ -1,0 +1,22 @@
+# My solution to https://leetcode.com/problems/two-sum
+
+from collections import defaultdict
+class Solution:
+    def twoSum(self, nums: 'List[int]', target: 'int') -> 'List[int]':
+        indices = defaultdict(list)
+        # Create a dictionary and store the indices
+        for i in range(len(nums)):
+            indices[nums[i]].append(i)
+        # Now search for the pairs
+        for i in indices:
+            first_num = i
+            first_num_index = indices[first_num].pop(0)
+            second_num = target - first_num
+			
+			
+            # if the second_number is in the indices dictionary
+            if second_num in indices:
+                if indices[second_num]:
+                    second_num_index = indices[second_num].pop(0)
+                    return first_num_index, second_num_index
+                
